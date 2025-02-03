@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "tika.jwt",
+      "type": "cn.soopy.tika.properties.JwtProperties",
+      "sourceType": "cn.soopy.tika.properties.JwtProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "tika.jwt.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "cn.soopy.tika.properties.JwtProperties"
+    },
+    {
+      "name": "tika.jwt.token-name",
+      "type": "java.lang.String",
+      "sourceType": "cn.soopy.tika.properties.JwtProperties"
+    },
+    {
+      "name": "tika.jwt.ttl",
+      "type": "java.lang.Long",
+      "sourceType": "cn.soopy.tika.properties.JwtProperties"
+    }
+  ],
+  "hints": []
+}
