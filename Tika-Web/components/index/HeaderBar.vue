@@ -5,22 +5,30 @@
       <div class="flex justify-start items-center gap-4">
           <UButton icon="i-heroicons-inbox" color="gray" size="sm" to="/user" />
       </div>
-
-      <!-- Auth 跳转按钮 -->
-      <UButton
-        color="gray"
-        variant="solid"
-        size="md"
-        icon="i-fluent-cloud-16-regular"
-      >
-        <NuxtLink to="/auth" class="flex items-center gap-2"> 登录 </NuxtLink>
-      </UButton>
+      <!-- Auth 跳转按钮（未登录时） -->
+        <UButton
+            color="gray"
+            variant="solid"
+            size="md"
+            icon="i-fluent-cloud-16-regular"
+          >
+            <NuxtLink to="/auth" class="flex items-center gap-2"> 登录 </NuxtLink>
+          </UButton>
+      <!-- <div v-else>
+        <UButton
+            color="gray"
+            variant="outline"
+            size="md"
+            icon="i-fluent-sign-out-20-regular"
+          />
+      </div> -->
     </div>
   </UCard>
 </template>
 
 <script setup lang="ts">
 import { UButton } from '#components';
+
 const toast = useToast()
 
 const featureDeveloping = () => {

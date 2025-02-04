@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @Slf4j
-@EnableCaching // 启用 Spring Cache
+@EnableCaching
 public class TikaApplication {
     public static void main(String[] args) {
         SpringApplication.run(TikaApplication.class, args);

@@ -6,6 +6,7 @@ export const useAuthStore = defineStore('authStore', () => {
 
     // 仅在客户端环境读取 localStorage
     if (typeof window !== 'undefined') {
+        console.log("获取user")
         const storedUser = localStorage.getItem("user")
         if (storedUser) {
             user.value = JSON.parse(storedUser)
