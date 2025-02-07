@@ -12,6 +12,7 @@
     <select id="pageQuery" resultType="cn.soopy.tika.vo.TodoVO">
         SELECT
             t.id AS todoId,
+            t.user_id AS userId,
             t.title AS title,
             t.content AS content,
             t.category_id AS categoryId,
@@ -23,11 +24,14 @@
             c.name AS  categoryName
         FROM todo t LEFT OUTER JOIN category c ON t.category_id = c.id
         <where>
+            <if test="userId != null">
+                AND t.user_id = #{userId}
+            </if>
             <if test="status != null">
-                AND status = #{status}
+                AND t.status = #{status}
             </if>
         </where>
-        ORDER BY createdAt DESC
+        ORDER BY t.created_at DESC
     </select>
 
     <update id="update">

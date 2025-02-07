@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: dev 
+    active: prod
 
   datasource:
     driver-class-name: ${spring.datasource.type}

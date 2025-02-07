@@ -61,6 +61,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public PageResult<TodoVO> pageQuery(TodoPageQueryDTO todoPageQueryDTO) {
         log.info("Todo分页查询: {}", todoPageQueryDTO);
+        todoPageQueryDTO.setUserId(BaseContext.getCurrentId());
         PageHelper.startPage(todoPageQueryDTO.getPage(), todoPageQueryDTO.getPageSize());
         Page<TodoVO> page = todoMapper.pageQuery(todoPageQueryDTO);
         return new PageResult<TodoVO>(page.getTotal(), page.getResult());
