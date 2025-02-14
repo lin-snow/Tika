@@ -2,7 +2,10 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Tika"
+      title: "Tika",
+      meta: [
+        { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" }
+      ]
     }
   },
   compatibilityDate: '2024-11-01',
