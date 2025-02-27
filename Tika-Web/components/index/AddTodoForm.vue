@@ -4,7 +4,7 @@
     <div class="flex justify-between  mb-3">
       <div class="flex justify-start items-center gap-2">
         <UIcon name="i-unjs-unbuild" class="w-5 h-5" />
-        <h2 class="text-lg font-semibold">添加任务</h2>
+        <h2 class="text-lg font-semibold text-slate-900">添加任务</h2>
       </div>
       <div class="flex justify-end items-center gap-2"> 
         <!-- 清空表单 -->

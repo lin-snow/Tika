@@ -5,7 +5,7 @@
     <div class="flex justify-between items-center">
       <div class="flex justify-start gap-4">
         <UIcon name="i-fluent-emoji-flat-clipboard" class="w-5 h-5 mt-1" />
-        <h2 class="text-lg font-semibold mb-2">待办清单</h2>
+        <h2 class="text-lg font-semibold mb-2 text-slate-900">待办清单</h2>
       </div>
       <div class="flex justify-end items-center">
         <!-- 刷新任务列表 -->
@@ -75,8 +75,8 @@
             
             <UDivider size="sm" type="dotted" />
 
-            <div class="m-2">
-              <p class="text-sm text-gray-700">
+            <div class="m-2  text-wrap break-all">
+              <p class="text-sm text-gray-700 ">
               <UIcon name="i-fluent-emoji-flat-page-facing-up" class="w-4 h-4"/> <strong>内容:</strong> {{ selectedTodo?.content || "无" }}
               </p>
               <p class="text-sm my-1 text-gray-700">

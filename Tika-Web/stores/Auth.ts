@@ -1,44 +1,55 @@
 import type { User } from '@/types/models'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 export const useAuthStore = defineStore('authStore', () => {
     const user = ref<User | null>(null)
+    const isLoaded = ref(false) // 标记是否已经加载完成
 
-    // 仅在客户端环境读取 localStorage
-    if (typeof window !== 'undefined') {
-        console.log("获取user")
+    // 仅在客户端读取 localStorage
+    if (import.meta.client) {
+        console.log("获取 user")
         const storedUser = localStorage.getItem("user")
         if (storedUser) {
             user.value = JSON.parse(storedUser)
         }
+        isLoaded.value = true // 标记加载完成
     }
 
-    // 监听 user 变化，自动存入 localStorage（仅在客户端执行）
-    watchEffect(() => {
-        if (typeof window !== 'undefined') {
-            if (user.value) {
-                localStorage.setItem("user", JSON.stringify(user.value))
+    // 监听 user 变化，自动存入 localStorage
+    watch(user, (newUser) => {
+        if (process.client) {
+            if (newUser) {
+                localStorage.setItem("user", JSON.stringify(newUser))
             } else {
                 localStorage.removeItem("user")
             }
         }
-    })
+    }, { deep: true })
 
+    // 获取用户信息
     const getUser = () => user.value
     const getToken = () => user.value?.token || null
     const isAuthenticated = () => !!user.value
 
+    // 设置用户信息
     const setUser = (newUser: User) => {
         user.value = newUser
-        localStorage.setItem("user", JSON.stringify(newUser))
     }
 
+    // 清除用户信息
     const clearUser = () => {
         user.value = null
-        localStorage.removeItem("user")
     }
 
-    
+    const loadUser = () => {
+        if (typeof window !== 'undefined') {
+          const storedUser = localStorage.getItem("user")
+          if (storedUser) {
+            user.value = JSON.parse(storedUser)
+          }
+          isLoaded.value = true
+        }
+      }
 
-    return { user, getUser, getToken, isAuthenticated, setUser, clearUser }
+    return { user, isLoaded, getUser, getToken, isAuthenticated, setUser, clearUser, loadUser }
 })

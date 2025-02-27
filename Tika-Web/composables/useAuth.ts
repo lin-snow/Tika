@@ -1,8 +1,7 @@
 import type { User, UserToLogin, UserToRegister } from '@/types/models'
 import { postRequest } from '@/utils/api'
 import { useRouter } from 'vue-router'
-
-
+import { useAuthStore } from '@/stores/Auth' 
 
 export const useAuth = () => {
     const auth = useAuthStore()

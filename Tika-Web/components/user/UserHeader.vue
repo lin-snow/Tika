@@ -7,11 +7,9 @@
           to="/"
           variant="solid"
           color="gray"
-          size="md"
+          size="sm"
           icon="i-fluent-home-12-regular"
-        >
-          返回
-        </UButton>
+        />
       </div>
       <!-- github项目地址 -->
       <div>
