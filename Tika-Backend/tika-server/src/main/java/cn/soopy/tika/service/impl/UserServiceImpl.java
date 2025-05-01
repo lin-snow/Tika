@@ -13,8 +13,6 @@ import cn.soopy.tika.mapper.CategoryMapper;
 import cn.soopy.tika.mapper.TodoMapper;
 import cn.soopy.tika.mapper.UserMapper;
 import cn.soopy.tika.service.UserService;
-import cn.soopy.tika.utils.JwtUtil;
-import cn.soopy.tika.vo.UserLoginVO;
 import cn.soopy.tika.vo.UserStatusVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +64,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(UserDTO userDTO) {
         log.info("新用户注册: {}", userDTO);
+        if (userDTO.getUsername() == null || userDTO.getUsername().isBlank()){
+            throw new BaseException(MessageConstant.EMPTY_NAME);
+        }
+
         String username = userDTO.getUsername();
         String password = DigestUtils.md5DigestAsHex(userDTO.getPassword().getBytes());
 
